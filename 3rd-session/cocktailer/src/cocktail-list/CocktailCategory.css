@@ -1,0 +1,9 @@
+.category-container {
+    display: flex;
+    justify-content: space-around;
+    padding: 5px 20px 5px 20px;
+}
+
+h2{
+    text-align: center;
+}
