@@ -6,6 +6,7 @@ import Header from './shared/header/Header';
 import Footer from './shared/Footer';
 import Search from './cocktail-list/Search';
 import CocktailCategory from './cocktail-list/CocktailCategory';
+import CocktailDetails from './cocktail-details/CocktailDetails';
 
 const categories = [
   {
@@ -40,11 +41,25 @@ class App extends Component{
 
         {categories.map(category =>
           <Route 
-            category={category} 
+            exact
             path={'/'+category.title} 
             render={() => <CocktailCategory category={category}/>}
           />
         )}
+
+        <Route 
+          exact
+          path={'/cocktails/:id'} 
+          render={(routerProps) => <CocktailDetails cocktailId={routerProps.match.params['id']}/>}
+        />
+
+        <Route 
+          exact
+          path={'/'} 
+          render={() => categories.map(category =>
+              <CocktailCategory category={category}/>
+          )}>
+        </Route>
         
         <Footer/>
       </Router>
